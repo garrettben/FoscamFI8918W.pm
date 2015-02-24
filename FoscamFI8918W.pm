@@ -26,13 +26,12 @@
 # This module contains the implementation of the Foscam FI8918W IP camera control
 # protocol
 #
-# -- Modified 20150218 -- Invert camera, change orientation for pan/tilt, change to single step, change math for presets 1-8
-#
 package ZoneMinder::Control::FoscamFI8918W;
 
 use 5.006;
 use strict;
 use warnings;
+use Time::HiRes qw(usleep nanosleep);
 
 require ZoneMinder::Base;
 require ZoneMinder::Control;
@@ -49,8 +48,6 @@ our $VERSION = $ZoneMinder::Base::VERSION;
 
 use ZoneMinder::Logger qw(:all);
 use ZoneMinder::Config qw(:all);
-
- use Time::HiRes qw( usleep );
 
 sub new
 {
@@ -183,8 +180,14 @@ sub moveConUpRight
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Up Right" );
-        my $cmd = "decoder_control.cgi?command=93&onestep=1&";
+        #my $cmd = "decoder_control.cgi?command=93&onestep=1&";
+        #$self->sendCmd( $cmd );
+        my $cmd = "decoder_control.cgi?command=2&onestep=1&";
         $self->sendCmd( $cmd );
+        usleep(10000);
+        my $cmd = "decoder_control.cgi?command=6&onestep=1&";
+        $self->sendCmd( $cmd );
+
 }
 
 #Diagonally Down Right Arrow
@@ -193,7 +196,12 @@ sub moveConDownRight
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Down Right" );
-        my $cmd = "decoder_control.cgi?command=91&onestep=1&";
+        #my $cmd = "decoder_control.cgi?command=91&onestep=1&";
+        #$self->sendCmd( $cmd );
+        my $cmd = "decoder_control.cgi?command=0&onestep=1&";
+        $self->sendCmd( $cmd );
+        usleep(10000);
+        my $cmd = "decoder_control.cgi?command=6&onestep=1&";
         $self->sendCmd( $cmd );
 }
 
@@ -203,7 +211,12 @@ sub moveConUpLeft
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Up Left" );
-        my $cmd = "decoder_control.cgi?command=92&onestep=1&";
+        #my $cmd = "decoder_control.cgi?command=92&onestep=1&";
+        #$self->sendCmd( $cmd );
+        my $cmd = "decoder_control.cgi?command=2&onestep=1&";
+        $self->sendCmd( $cmd );
+        usleep(10000);
+        my $cmd = "decoder_control.cgi?command=4&onestep=1&";
         $self->sendCmd( $cmd );
 }
 
@@ -213,7 +226,12 @@ sub moveConDownLeft
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Down Left" );
-        my $cmd = "decoder_control.cgi?command=90&onestep=1&";
+        #my $cmd = "decoder_control.cgi?command=90&onestep=1&";
+        #$self->sendCmd( $cmd );
+        my $cmd = "decoder_control.cgi?command=0&onestep=1&";
+        $self->sendCmd( $cmd );
+        usleep(10000);
+        my $cmd = "decoder_control.cgi?command=4&onestep=1&";
         $self->sendCmd( $cmd );
 }
 
