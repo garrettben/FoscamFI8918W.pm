@@ -180,8 +180,6 @@ sub moveConUpRight
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Up Right" );
-        #my $cmd = "decoder_control.cgi?command=93&onestep=1&";
-        #$self->sendCmd( $cmd );
         my $cmd = "decoder_control.cgi?command=2&onestep=1&";
         $self->sendCmd( $cmd );
         usleep(10000);
@@ -196,8 +194,6 @@ sub moveConDownRight
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Down Right" );
-        #my $cmd = "decoder_control.cgi?command=91&onestep=1&";
-        #$self->sendCmd( $cmd );
         my $cmd = "decoder_control.cgi?command=0&onestep=1&";
         $self->sendCmd( $cmd );
         usleep(10000);
@@ -211,8 +207,6 @@ sub moveConUpLeft
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Up Left" );
-        #my $cmd = "decoder_control.cgi?command=92&onestep=1&";
-        #$self->sendCmd( $cmd );
         my $cmd = "decoder_control.cgi?command=2&onestep=1&";
         $self->sendCmd( $cmd );
         usleep(10000);
@@ -226,8 +220,6 @@ sub moveConDownLeft
         my $self = shift;
         $stop_command = "1";
         Debug( "Move Diagonally Down Left" );
-        #my $cmd = "decoder_control.cgi?command=90&onestep=1&";
-        #$self->sendCmd( $cmd );
         my $cmd = "decoder_control.cgi?command=0&onestep=1&";
         $self->sendCmd( $cmd );
         usleep(10000);
